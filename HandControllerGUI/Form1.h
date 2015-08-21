@@ -2026,7 +2026,7 @@ private: System::Windows::Forms::Button^  bPlayRecording;
 		}
 #pragma endregion
 
-
+// Timer tick function: performs rendering operations and updates user input for the model
 private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
 		UNREFERENCED_PARAMETER(sender);
 		UNREFERENCED_PARAMETER(e);
@@ -2035,81 +2035,187 @@ private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e
 		o_gl->SwapOpenGLBuffers();
 		}
 
+// Trackbar for Finger1Phalanx1 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger1Ph1_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	    GLfloat val = (GLfloat)(trFinger1Ph1 -> Value)/10;
+		// Get actual value for the phalanx angle
+	    GLfloat val = (GLfloat)(trFinger1Ph1 -> Value)/10; 
+		
+		// Save the value
 		final_values[0] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(0, val);
+		
+		// Update flag
 		flags_new_value[0] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger1Phalanx1 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for Finger1Phalanx2 scrolled: updates the angle in the rendering and stores the value	
 private: System::Void trFinger1Ph2_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Get actual value for the phalanx angle
 		GLfloat val = (GLfloat)(trFinger1Ph2 -> Value)/10;
+		
+		// Save the value
 		final_values[1] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(1, val);
+		
+		// Update flag
 		flags_new_value[1] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger1Phalanx2 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for Finger1Phalanx3 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger1Ph3_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Get actual value for the phalanx angle
 		GLfloat val = (GLfloat)(trFinger1Ph3 -> Value)/10;
+		
+		// Save the value
 		final_values[2] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(2, val);
+		
+		// Update flag
 		flags_new_value[2] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger1Phalanx3 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for the Finger1 speed scrolled: update the user interface		
 private: System::Void trSpeed1_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Update user interface with the rotation speed value
 		this -> lblSpeed1 -> Text = (trSpeed1 -> Value) + "%";
 		}
 
+// Trackbar for Finger2Phalanx1 scrolled: updates the angle in the rendering and stores the value		
 private: System::Void trFinger2Ph1_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	    GLfloat val = (GLfloat)(trFinger2Ph1 -> Value)/10;
+	    // Get actual value for the phalanx angle
+		GLfloat val = (GLfloat)(trFinger2Ph1 -> Value)/10;
+		
+		// Save the value
 		final_values[3] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(4, val);
+		
+		// Update flag
 		flags_new_value[3] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger2Phalanx1 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for Finger2Phalanx2 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger2Ph2_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Get actual value for the phalanx angle
 		GLfloat val = (GLfloat)(trFinger2Ph2 -> Value)/10;
+		
+		// Save the value
 		final_values[4] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(5, val);
+		
+		// Update flag
 		flags_new_value[4] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger2Phalanx2 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for Finger2Phalanx3 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger2Ph3_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Get actual value for the phalanx angle
 		GLfloat val = (GLfloat)(trFinger2Ph3 -> Value)/10;
+		
+		// Save the value
 		final_values[5] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(6, val);
+		
+		// Update flag
 		flags_new_value[5] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger2Phalanx3 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for the Finger2 speed scrolled: update the user interface	
 private: System::Void trSpeed2_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Update user interface with the rotation speed value
 		this -> lblSpeed2 -> Text = (trSpeed2 -> Value) + "%";
 		}
 
+// Trackbar for Finger3Phalanx1 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger3Ph1_Scroll(System::Object^  sender, System::EventArgs^  e) {
-	    GLfloat val = (GLfloat)(trFinger3Ph1 -> Value)/10;
+	    // Get actual value for the phalanx angle
+		GLfloat val = (GLfloat)(trFinger3Ph1 -> Value)/10;
+		
+		// Save the value
 		final_values[6] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(8, val);
+		
+		// Update flag
 		flags_new_value[6] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger3Phalanx1 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for Finger3Phalanx2 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger3Ph2_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Get actual value for the phalanx angle
 		GLfloat val = (GLfloat)(trFinger3Ph2 -> Value)/10;
+		
+		// Save the value
 		final_values[7] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(9, val);
+		
+		// Update flag
 		flags_new_value[7] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger3Phalanx2 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for Finger3Phalanx3 scrolled: updates the angle in the rendering and stores the value
 private: System::Void trFinger3Ph3_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Get actual value for the phalanx angle
 		GLfloat val = (GLfloat)(trFinger3Ph3 -> Value)/10;
+		
+		// Save the value
 		final_values[8] = val;
+		
+		// Update model
 		o_gl -> update_model_angles(10, val);
+		
+		// Update flag
 		flags_new_value[8] = 1;
+		
+		// Update user interface with the value:
 		this -> lblFinger3Phalanx3 -> Text = "" + val.ToString("#.#");
 		}
+		
+// Trackbar for the Finger3 speed scrolled: update the user interface	
 private: System::Void trSpeed3_Scroll(System::Object^  sender, System::EventArgs^  e) {
+		// Update user interface with the rotation speed value
 		this -> lblSpeed3 -> Text = (trSpeed3 -> Value) + "%";
 		}
 
+		
 // Update value button events
 private: System::Void bStartMF1_Click(System::Object^  sender, System::EventArgs^  e) {
 			intervals_set1();
@@ -2138,12 +2244,16 @@ private: System::Void lF1p1req_Click(System::Object^  sender, System::EventArgs^
 public: int updateHand(int source);
 public: void resetHand();
 
+// Detect mouse motion above the display panel
 private: System::Void panel4_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			 FLAG_GL_HOVER = 0;
+			 FLAG_GL_HOVER = 1;
 		 }
+// Detects mouse leaving the display panel
 private: System::Void panel4_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
 			 FLAG_GL_HOVER = 0;
 		 }
+		 
+// Analyze mouse clicks
 private: System::Void panelgl_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		 MouseState.leftButton = FALSE;
 		 MouseState.rightButton = FALSE;
@@ -2192,6 +2302,7 @@ private: System::Void panelgl_MouseDown(System::Object^  sender, System::Windows
 		}
  }
 
+ // Analyze mouse motion
 private: System::Void panelgl_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		// Update the mouse path with the mouse information
         POINT mouseDownLocation;
@@ -2210,6 +2321,8 @@ private: System::Void panelgl_MouseMove(System::Object^  sender, System::Windows
 						MouseState.old_y = MouseState.y;
 						MouseState.x = mouseDownLocation.x;
 						MouseState.y = mouseDownLocation.y;
+						
+						// Used for debugging object interaction:
 						label3 -> Text = "X: " + MouseState.x + " Y: " + MouseState.y;
 					}
 			}
@@ -2224,13 +2337,18 @@ private: System::Void panelgl_MouseMove(System::Object^  sender, System::Windows
 					MouseState.old_y = MouseState.y;
 					MouseState.x = mouseDownLocation.x;
 					MouseState.y = mouseDownLocation.y;
+					
+					// Used for debugging object interaction:
 					label3 -> Text = "X: " + MouseState.x + " Y: " + MouseState.y;
+					
+					// Check if user is clicking on an object
 					o_gl -> selectGL(MouseState.x, (528 - MouseState.y));
 				}
 			}
 		 }
 }
-		 
+		
+// User let go of the mouse button, reset all variables		
 private: System::Void panelgl_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		 MouseState.leftButton = FALSE;
 		 MouseState.rightButton = FALSE;
@@ -2240,6 +2358,7 @@ private: System::Void panelgl_MouseUp(System::Object^  sender, System::Windows::
 		 MouseState.old_y = MouseState.y;
 		 }
 
+// Updating track bars / scroll bars with values (set through user clicking on panel)	 
 private: void updateTrackBars(int vertex)
 {		
 	GLfloat dbtheta = f_p[vertex].theta;
@@ -2295,49 +2414,10 @@ private: void updateTrackBars(int vertex)
 
 private: System::Void timer2_Tick(System::Object^  sender, System::EventArgs^  e) 
 {
-	//int flag_counter = 0;
-	//if (FLAG_NEW_VALUES)
-	//{
-	//	for (int i = 0; i < 9; i++)
-	//	{
-	//		if (flags_new_value[i])
-	//		{
-	//			if (angles_to_AVR[i] == final_values[i])
-	//			{
-	//				increments[i] = 0;
-	//				flags_new_value[i] = 0;
-	//				flag_counter ++;
-	//			}
-	//			else
-	//			{
-	//				if ((abs(angles_to_AVR[i]-final_values[i])) < (abs(increments[i])))
-	//				{
-	//					angles_to_AVR[i] = final_values[i];
-	//					increments[i] = 0;
-	//					flags_new_value[i] = 0;
-	//					flag_counter ++;
-	//				}
-	//				else
-	//				{
-	//				angles_to_AVR[i] += increments[i];
-	//				}
-	//			}
-	//		}
-	//		else
-	//		{
-	//			flag_counter ++;
-	//		}
-	//	}
-	//	if (flag_counter >= 9)
-	//	{
-	//		FLAG_NEW_VALUES = FALSE;
-	//		this -> timer2 -> Enabled = false;
-	//	}
-	//	// Send new data to AVR
-	//	updateHand(1);
-	//}
+	// Obsolete, doesn't do anything.
 }
 
+// Servo interval calculations for PMW
 private: double calculate_servo_intervals(GLfloat speed, GLfloat angle)
 {
 	double pulse_width = angle * 1000.0f / 180.0f; // Pulse width in us
@@ -2350,8 +2430,10 @@ private: double calculate_servo_intervals(GLfloat speed, GLfloat angle)
 	return increment;
 }
 
+// Update functions for real servo control (finger 1)
 private: void intervals_set1()
 {
+		// Typical chain: read value and speed, calculate the new PWM pulse width, save
 		FLAG_NEW_VALUES = TRUE;
 		if (chk1s -> Checked)
 		{
@@ -2391,8 +2473,11 @@ private: void intervals_set1()
 		pbarMF1 -> Value = 0;
 		if (MOST_CYCLES!=0){this -> timer3 -> Enabled = true;}		 
 }
+
+// Update functions for real servo control (finger 2)
 private: void intervals_set2()
 {
+		// Typical chain: read value and speed, calculate the new PWM pulse width, save
 		FLAG_NEW_VALUES = TRUE;
 		if (chk2s -> Checked)
 		{
@@ -2432,8 +2517,11 @@ private: void intervals_set2()
 		pbarMF2 -> Value = 0;
 		if (MOST_CYCLES!=0){this -> timer3 -> Enabled = true;}
 }
+
+// Update functions for real servo control (finger 3)
 private: void intervals_set3()
 {
+		// Typical chain: read value and speed, calculate the new PWM pulse width, save
 		FLAG_NEW_VALUES = TRUE;
 		if (chk3s -> Checked)
 		{
@@ -2474,6 +2562,7 @@ private: void intervals_set3()
 		if (MOST_CYCLES!=0){this -> timer3 -> Enabled = true;} 
 }
 
+// Timer tick function (increments the PWM pulse width to rotate with certain speed)
 private: System::Void timer3_Elapsed(System::Object^  sender, System::Timers::ElapsedEventArgs^  e) {
 	int flag_counter = 0;
 	if (FLAG_NEW_VALUES)
@@ -2530,19 +2619,22 @@ private: System::Void timer3_Elapsed(System::Object^  sender, System::Timers::El
 	}
 }
 
-
-
-
-
+// STOP THE HAND
 private: System::Void bEmergencyStop_Click(System::Object^  sender, System::EventArgs^  e) {
 		updateHand(2);
 }
+
+// User changes the COM port
 private: System::Void cbComPort_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 			 COM_CHANNEL = cbComPort -> SelectedIndex;
 		 }
+		 
+// User changes the baud rate
 private: System::Void cbBaudRate_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 			 COM_BAUD = cbBaudRate -> SelectedIndex;
 		 }
+		 
+// User clicks help menu
 private: System::Void helpToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
 		 System::Diagnostics::Process::Start("http://milagorobets.com/");
 
